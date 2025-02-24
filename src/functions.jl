@@ -129,7 +129,7 @@ function generate_graph(base_iris::Vector{String}, config::Config)
     graph = merge_metagraphs(trees)
 
     ## Step 3: Populate the vertex properties with the term properties fetched from OLS
-    expand_vertex_properties!(graph, vertex_properties)
+    expand_vertex_properties!(graph)
 
     ## Step 4: Save the graph to a file
     export_to_graphxml(graph, config.output_file)
