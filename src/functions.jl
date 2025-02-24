@@ -24,8 +24,8 @@ through each term in the input list and finds the corresponding vertex in the gr
 is found, it expands its properties with the given term properties.
 """
 function expand_vertex_properties!(graph::MetaDiGraph)
-    @debug "Expanding vertex properties with term properties of $(length(terms)) terms"
     terms = [onto_term(onto, iri) for (onto, iri) in get_iris_from_props(graph)]
+    @debug "Expanding vertex properties with term properties of $(length(terms)) terms"
 
     for term in terms
         # Find the vertex in the graph that corresponds to the term
@@ -129,7 +129,7 @@ function generate_graph(base_iris::Vector{String}, config::Config)
     graph = merge_metagraphs(trees)
 
     ## Step 3: Populate the vertex properties with the term properties fetched from OLS
-    expand_vertex_properties!(graph)
+    expand_vertex_properties!(graph, vertex_properties)
 
     ## Step 4: Save the graph to a file
     export_to_graphxml(graph, config.output_file)
