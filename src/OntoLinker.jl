@@ -1,6 +1,6 @@
 module OntoLinker
 
-using Comonicon
+using Comonicon: @main
 using Configurations
 using LightXML
 using Graphs
